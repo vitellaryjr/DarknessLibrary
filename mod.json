@@ -6,5 +6,12 @@
     "engineVer": "0.5.1",
 
     "map": "room1",
-    "party": ["kris", "susie", "ralsei"]
+    "party": ["kris", "susie", "ralsei"],
+
+    "config": {
+        "darkness": {
+            "style": "soft",
+            "overlap": false
+        }
+    }
 }
