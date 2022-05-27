@@ -531,7 +531,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["characters"] = "kris"
+            ["characters"] = "party"
           }
         },
         {

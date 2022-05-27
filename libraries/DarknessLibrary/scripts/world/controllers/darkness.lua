@@ -10,6 +10,8 @@ function Darkness:postLoad()
     if self.data.properties["characters"] then
         if self.data.properties["characters"] == "all" then
             characters = Game.stage:getObjects(Character)
+        elseif self.data.properties["characters"] == "party" then
+            characters = Utils.mergeMultiple({Game.world.player}, Game.stage:getObjects(Follower))
         else
             for _,chara in ipairs(Game.stage:getObjects(Character)) do
                 if self.data.properties["characters"]:find(chara.actor.id) then

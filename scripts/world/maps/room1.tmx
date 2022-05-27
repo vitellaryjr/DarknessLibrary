@@ -133,7 +133,7 @@ no-good wall slammers.</property>
  <objectgroup color="#ff0062" id="6" name="controllers">
   <object id="42" name="darkness" x="680" y="80">
    <properties>
-    <property name="characters" value="kris"/>
+    <property name="characters" value="party"/>
    </properties>
    <point/>
   </object>
