@@ -8,8 +8,8 @@ return {
   height = 24,
   tilewidth = 40,
   tileheight = 40,
-  nextlayerid = 6,
-  nextobjectid = 42,
+  nextlayerid = 7,
+  nextobjectid = 46,
   properties = {
     ["name"] = "Test Map - Room 1"
   },
@@ -503,32 +503,52 @@ return {
             ["flagcheck"] = "wall_hit",
             ["text1"] = "* I Am the Wall Guardian.[wait:5]\n* This Wall is Off Limits for you\nno-good wall slammers."
           }
-        },
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 6,
+      name = "controllers",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
         {
-          id = 37,
-          name = "lightsource",
+          id = 42,
+          name = "darkness",
           type = "",
-          shape = "ellipse",
-          x = 80,
-          y = 20,
-          width = 80,
-          height = 80,
+          shape = "point",
+          x = 680,
+          y = 80,
+          width = 0,
+          height = 0,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["characters"] = "all"
+          }
         },
         {
-          id = 41,
-          name = "lightsource",
+          id = 45,
+          name = "attachedlight",
           type = "",
-          shape = "rectangle",
-          x = 450,
-          y = 30,
-          width = 70,
-          height = 70,
+          shape = "point",
+          x = 100,
+          y = 160,
+          width = 0,
+          height = 0,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["radius"] = 40,
+            ["target"] = { id = 27 }
+          }
         }
       }
     },

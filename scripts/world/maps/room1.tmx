@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="42">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="40" tileheight="40" infinite="0" nextlayerid="7" nextobjectid="46">
  <editorsettings>
   <export target="room1.lua" format="lua"/>
  </editorsettings>
@@ -129,10 +129,21 @@ no-good wall slammers.</property>
    </properties>
    <point/>
   </object>
-  <object id="37" name="lightsource" x="80" y="20" width="80" height="80">
-   <ellipse/>
+ </objectgroup>
+ <objectgroup color="#ff0062" id="6" name="controllers">
+  <object id="42" name="darkness" x="680" y="80">
+   <properties>
+    <property name="characters" value="all"/>
+   </properties>
+   <point/>
   </object>
-  <object id="41" name="lightsource" x="450" y="30" width="70" height="70"/>
+  <object id="45" name="attachedlight" x="100" y="160">
+   <properties>
+    <property name="radius" type="float" value="40"/>
+    <property name="target" type="object" value="27"/>
+   </properties>
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup color="#7f00ff" id="5" name="markers">
   <object id="20" name="spawn" x="300" y="250">

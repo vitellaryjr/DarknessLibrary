@@ -10,7 +10,7 @@
 
     "config": {
         "darkness": {
-            "style": "soft",
+            "style": "solid",
             "overlap": false
         }
     }

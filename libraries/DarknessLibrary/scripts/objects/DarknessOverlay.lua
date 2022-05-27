@@ -8,6 +8,8 @@ function Darkness:init(alpha)
 
     -- parallax set to 0 so it's always aligned with the camera
     self:setParallax(0, 0)
+    -- don't allow debug selecting
+    self.debug_select = false
 
     self.alpha = alpha or 1
     self.overlap = Kristal.getLibConfig("darkness", "overlap")
@@ -23,7 +25,7 @@ function Darkness:draw()
         love.graphics.setBlendMode("lighten", "premultiplied")
     end
     for _,light in ipairs(Game.stage:getObjects(LightSource)) do
-        if light:isVisible() then
+        if light:isFullyVisible() then
             local x, y = light:getRelativePos(0,0, self)
             local color = Utils.copy(light.color)
             local alpha = color[4] or light.alpha
@@ -45,23 +47,25 @@ function Darkness:draw()
         end
     end
     for _,light in ipairs(Game.stage:getObjects(RectangleLightSource)) do
-        local x, y = light:getRelativePos(0,0, self)
-        local color = Utils.copy(light.color)
-        local alpha = color[4] or light.alpha
-        local w, h = light:getSize()
+        if light:isFullyVisible() then
+            local x, y = light:getRelativePos(0,0, self)
+            local color = Utils.copy(light.color)
+            local alpha = color[4] or light.alpha
+            local w, h = light:getSize()
 
-        if light.style == "solid" then
-            love.graphics.setColor(Utils.lerp({0,0,0}, color, alpha))
-            love.graphics.rectangle("fill", x, y, w, h)
-        elseif light.style == "soft" then
-            local extend = light.extend
-            if not extend then
-                extend = math.min(w/2, h/2)
+            if light.style == "solid" then
+                love.graphics.setColor(Utils.lerp({0,0,0}, color, alpha))
+                love.graphics.rectangle("fill", x, y, w, h)
+            elseif light.style == "soft" then
+                local extend = light.extend
+                if not extend then
+                    extend = math.min(w/2, h/2)
+                end
+                love.graphics.setColor(Utils.lerp({0,0,0}, color, alpha))
+                love.graphics.rectangle("fill", x, y, w, h)
+                love.graphics.setColor(Utils.lerp({0,0,0}, color, alpha/2))
+                love.graphics.rectangle("fill", x-extend, y-extend, w+extend*2, h+extend*2)
             end
-            love.graphics.setColor(Utils.lerp({0,0,0}, color, alpha))
-            love.graphics.rectangle("fill", x, y, w, h)
-            love.graphics.setColor(Utils.lerp({0,0,0}, color, alpha/2))
-            love.graphics.rectangle("fill", x-extend, y-extend, w+extend*2, h+extend*2)
         end
     end
     love.graphics.setBlendMode("alpha")
