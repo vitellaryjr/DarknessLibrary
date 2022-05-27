@@ -9,7 +9,7 @@ return {
   tilewidth = 40,
   tileheight = 40,
   nextlayerid = 6,
-  nextobjectid = 37,
+  nextobjectid = 42,
   properties = {
     ["name"] = "Test Map - Room 1"
   },
@@ -503,6 +503,32 @@ return {
             ["flagcheck"] = "wall_hit",
             ["text1"] = "* I Am the Wall Guardian.[wait:5]\n* This Wall is Off Limits for you\nno-good wall slammers."
           }
+        },
+        {
+          id = 37,
+          name = "lightsource",
+          type = "",
+          shape = "ellipse",
+          x = 80,
+          y = 20,
+          width = 80,
+          height = 80,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 41,
+          name = "lightsource",
+          type = "",
+          shape = "rectangle",
+          x = 450,
+          y = 30,
+          width = 70,
+          height = 70,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },

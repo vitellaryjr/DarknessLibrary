@@ -6,6 +6,7 @@ function Light:init(x, y, radius, color)
     self.color = color or {1,1,1}
     self.alpha = 1
     self.inherit_color = false
+    self.style = Kristal.getLibConfig("darkness", "style")
 end
 
 function Light:getRadius()
