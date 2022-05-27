@@ -20,7 +20,7 @@ function Darkness:postLoad()
     end
 
     local radius = self.data.properties["light_radius"] or 80
-    local color = Utils.parseColorProperty(self.data.properties["color"] or "#ffffffff")
+    local color = Utils.parseColorProperty(self.data.properties["light_color"] or "#ffffffff")
     if self.data.properties["light_alpha"] then
         color[4] = self.data.properties["light_alpha"]
     end
