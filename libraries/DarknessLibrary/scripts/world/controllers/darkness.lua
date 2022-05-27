@@ -19,10 +19,10 @@ function Darkness:postLoad()
         end
     end
 
-    local radius = self.data.properties["radius"] or 80
+    local radius = self.data.properties["light_radius"] or 80
     local color = Utils.parseColorProperty(self.data.properties["color"] or "#ffffffff")
-    if self.data.properties["alpha"] then
-        color[4] = self.data.properties["alpha"]
+    if self.data.properties["light_alpha"] then
+        color[4] = self.data.properties["light_alpha"]
     end
     for _,chara in ipairs(characters) do
         local light = LightSource(chara.width/2, chara.height/2, radius)
