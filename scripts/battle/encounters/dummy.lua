@@ -20,8 +20,8 @@ end
 
 function Dummy:onBattleStart()
     -- add darkness
-    local darkness = Game.battle:addChild(DarknessOverlay(1))
-    darkness:setLayer(BATTLE_LAYERS["below_ui"]) -- make sure it's below the ui
+    local darkness = Game.battle:addChild(DarknessOverlay(0.5))
+    -- darkness:setLayer(BATTLE_LAYERS["below_ui"]) -- make sure it's below the ui
 
     -- add light sources to every battler
     for _,chara in ipairs(Game.battle.party) do
