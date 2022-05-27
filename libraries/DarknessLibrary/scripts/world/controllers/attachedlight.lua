@@ -5,6 +5,9 @@ function Light:init(data)
 
     self.radius = data.properties["radius"] or 80
     self.color = Utils.parseColorProperty(data.properties["color"] or "#ffffffff")
+    if data.properties["alpha"] then
+        color[4] = data.properties["alpha"]
+    end
     self.offset = {data.properties["offset_x"] or 0, data.properties["offset_y"] or 0}
 
     self.target_objs = Utils.parsePropertyList("target", data.properties)

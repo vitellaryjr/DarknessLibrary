@@ -18,4 +18,22 @@ function Dummy:init()
     --self:addEnemy("dummy")
 end
 
+function Dummy:onBattleStart()
+    -- add darkness
+    local darkness = Game.battle:addChild(DarknessOverlay(1))
+    darkness:setLayer(BATTLE_LAYERS["below_ui"]) -- make sure it's below the ui
+
+    -- add light sources to every battler
+    for _,chara in ipairs(Game.battle.party) do
+        local light = LightSource(chara.width/2, chara.height/2, 80)
+        light.alpha = 1
+        chara:addChild(light)
+    end
+    for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
+        local light = LightSource(enemy.width/2, enemy.height/2, 80)
+        light.alpha = 1
+        enemy:addChild(light)
+    end
+end
+
 return Dummy

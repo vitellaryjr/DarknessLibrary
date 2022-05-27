@@ -18,16 +18,15 @@ function Darkness:postLoad()
             end
         end
     end
-    if self.data.properties["player_light"] then
-        if not Utils.containsValue(characters, Game.world.player) then
-            table.insert(characters, Game.world.player)
-        end
-    end
 
     local radius = self.data.properties["radius"] or 80
+    local color = Utils.parseColorProperty(self.data.properties["color"] or "#ffffffff")
+    if self.data.properties["alpha"] then
+        color[4] = self.data.properties["alpha"]
+    end
     for _,chara in ipairs(characters) do
         local light = LightSource(chara.width/2, chara.height/2, radius)
-        light.alpha = self.data.properties["alpha"] or 1
+        light.color = color
         chara:addChild(light)
     end
 end
