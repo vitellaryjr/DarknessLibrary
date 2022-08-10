@@ -28,7 +28,7 @@ function Darkness:draw()
         if light:isFullyVisible() then
             local x, y = light:getRelativePos(0,0, self)
             local color = Utils.copy(light.color)
-            local alpha = color[4] or light.alpha
+            local alpha = light.alpha
             local radius = light:getRadius()
 
             if light.style == "solid" then
@@ -48,14 +48,16 @@ function Darkness:draw()
     end
     for _,light in ipairs(Game.stage:getObjects(RectangleLightSource)) do
         if light:isFullyVisible() then
-            local x, y = light:getRelativePos(0,0, self)
+            local x1, y1 = light:getRelativePos(0,0, self)
+            local x2, y2 = light:getRelativePos(light.width,0, self)
+            local x3, y3 = light:getRelativePos(light.width,light.height, self)
+            local x4, y4 = light:getRelativePos(0,light.height, self)
             local color = Utils.copy(light.color)
             local alpha = color[4] or light.alpha
-            local w, h = light:getSize()
 
             if light.style == "solid" then
                 love.graphics.setColor(Utils.lerp({0,0,0}, color, alpha))
-                love.graphics.rectangle("fill", x, y, w, h)
+                love.graphics.polygon("fill", x1, y1, x2, y2, x3, y3, x4, y4)
             elseif light.style == "soft" then
                 local extend = light.extend
                 if not extend then
